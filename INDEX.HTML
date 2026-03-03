@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyDharma — Financial Wisdom for Everyday Life</title>
+    <link rel="stylesheet" href="STYLE.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a class="nav-logo" onclick="showPage('home')">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22" cy="28" r="14" fill="#F2D974" opacity="0.4"/>
+                        <ellipse cx="22" cy="30" rx="10" ry="4" fill="#D4A843" opacity="0.5"/>
+                        <rect x="18" y="16" width="8" height="14" rx="4" fill="#D4A843"/>
+                        <path d="M22 18 C22 18, 16 12, 16 8 C16 5, 18 3, 22 6 C26 3, 28 5, 28 8 C28 12, 22 18, 22 18Z" fill="#40916C"/>
+                        <path d="M22 14 C22 14, 18 10, 18 7 C18 5, 19 4, 22 6 C25 4, 26 5, 26 7 C26 10, 22 14, 22 14Z" fill="#52B788"/>
+                        <path d="M22 24 L22 10" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M22 16 C20 14, 18 14, 17 15" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round" fill="none"/>
+                        <path d="M22 13 C24 11, 26 11, 27 12" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">MoneyDharma</span>
+                    <span class="logo-tagline">Financial Wisdom for Everyday Life</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a class="active" data-page="home" onclick="showPage('home')" data-i18n="nav_home">🏠 Home</a></li>
+                <li><a data-page="learn" onclick="showPage('learn')" data-i18n="nav_learn">📚 Learn</a></li>
+                <li><a data-page="tools" onclick="showPage('tools')" data-i18n="nav_tools">🛠️ Tools</a></li>
+                <li><a data-page="schemes" onclick="showPage('schemes')" data-i18n="nav_schemes">🏛️ Schemes</a></li>
+                <li><a data-page="progress" onclick="showPage('progress')" data-i18n="nav_progress">📊 My Progress</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <select class="lang-selector" id="langSelector">
+                    <option value="en">🌐 English</option>
+                    <option value="hi">🌐 हिन्दी</option>
+                </select>
+                <!-- Voice Toggle Button -->
+                <button class="btn-voice" id="voiceToggleBtn" onclick="toggleAudio()" title="Enable Voice">🔊</button>
+                <button class="btn-login" onclick="openModal('loginModal')" data-i18n="btn_login">Login</button>
+                <button class="btn-get-started" onclick="showPage('onboarding')" data-i18n="btn_get_started">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HOME PAGE ===== -->
+    <div class="page-section active" id="page-home">
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content animate-in">
+                    <h1 data-i18n="hero_title">Your Journey to <span>Financial Freedom</span> Starts Here</h1>
+                    <p data-i18n="hero_desc">MoneyDharma helps you understand money, build savings, and create a secure future — no matter where you start.</p>
+                    <!-- Voice: Read Hero -->
+                    <button class="btn-narrate" onclick="speakKey('hero_desc')" title="Listen to this">🔊</button>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="showPage('onboarding')" data-i18n="btn_start_free">🚀 Start Learning Free</button>
+                        <button class="btn-secondary" onclick="showPage('learn')" data-i18n="btn_explore">📖 Explore Lessons</button>
+                    </div>
+                </div>
+                <div class="hero-illustration animate-in delay-2">
+                    <div class="hero-visual">
+                        <div class="hero-scene">
+                            <div class="scene-circle">
+                                <div class="scene-inner">
+                                    <div class="scene-plant">🌱</div>
+                                    <div class="scene-coin">🪙</div>
+                                    <div class="scene-text">Grow Your Financial Knowledge</div>
+                                </div>
+                            </div>
+                            <div class="floating-card"><span class="fc-icon">📱</span><span>Learn UPI Safely</span></div>
+                            <div class="floating-card"><span class="fc-icon">💰</span><span>Smart Savings Tips</span></div>
+                            <div class="floating-card"><span class="fc-icon">📋</span><span>Budget Planning</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-bar">
+            <div class="stats-container">
+                <div class="stat-item animate-in delay-1">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label" data-i18n="stat_learners">Learners Empowered</div>
+                </div>
+                <div class="stat-item animate-in delay-2">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label" data-i18n="stat_lessons">Bite-sized Lessons</div>
+                </div>
+                <div class="stat-item animate-in delay-3">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label" data-i18n="stat_languages">Indian Languages</div>
+                </div>
+                <div class="stat-item animate-in delay-4">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label" data-i18n="stat_free">Free Forever</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="section" style="padding-top:0;">
+                <div class="section-header">
+                    <div class="section-badge" data-i18n="features_badge">✨ Why MoneyDharma?</div>
+                    <h2 data-i18n="features_title">Built for Real People, Real Lives</h2>
+                    <p data-i18n="features_desc">We understand that financial education should be simple, practical, and respectful.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animate-in delay-1">
+                        <div class="feature-icon green">📖</div>
+                        <h3 data-i18n="feat_simple_title">Simple Lessons</h3>
+                        <p data-i18n="feat_simple_desc">No confusing jargon. Learn through stories, videos, and audio in your own language.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-2">
+                        <div class="feature-icon gold">🛠️</div>
+                        <h3 data-i18n="feat_tools_title">Practical Tools</h3>
+                        <p data-i18n="feat_tools_desc">Budget planners and savings trackers designed for irregular incomes.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-3">
+                        <div class="feature-icon blue">🏛️</div>
+                        <h3 data-i18n="feat_schemes_title">Government Schemes</h3>
+                        <p data-i18n="feat_schemes_desc">Learn about Jan Dhan, Mudra, and other schemes.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-1">
+                        <div class="feature-icon green">📱</div>
+                        <h3 data-i18n="feat_digital_title">Digital Banking Guide</h3>
+                        <p data-i18n="feat_digital_desc">Step-by-step guidance on using UPI, ATMs, and mobile banking.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-2">
+                        <div class="feature-icon gold">👥</div>
+                        <h3 data-i18n="feat_community_title">Community Focused</h3>
+                        <p data-i18n="feat_community_desc">Designed with SHG members, daily wage workers, and youth.</p>
+                    </div>
+                    <div class="feature-card animate-in delay-3">
+                        <div class="feature-icon blue">📥</div>
+                        <h3 data-i18n="feat_offline_title">Works Offline</h3>
+                        <p data-i18n="feat_offline_desc">Download lessons to learn anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="section-badge" data-i18n="cta_badge">🌟 Ready to Begin?</div>
+            <h2 data-i18n="cta_title">Small financial steps today create strong futures tomorrow.</h2>
+            <p data-i18n="cta_desc">Join thousands of learners. It's free, simple, and made for you.</p>
+            <button class="btn-primary cta-btn" onclick="showPage('onboarding')" data-i18n="cta_btn">🌱 Start My Learning Journey</button>
+        </section>
+    </div>
+
+    <!-- ===== ONBOARDING ===== -->
+    <div class="page-section" id="page-onboarding">
+        <div class="onboarding-page">
+            <div class="onboarding-container">
+                <div class="onboarding-header animate-in">
+                    <div class="onboarding-emoji">🌱</div>
+                    <h1 data-i18n="onboard_title">Welcome to MoneyDharma</h1>
+                    <p data-i18n="onboard_desc">Let us personalise your learning journey.</p>
+                    <button class="btn-narrate" onclick="speakKey('onboard_desc')">🔊</button>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card animate-in delay-1" onclick="selectProfile(this)">
+                        <div class="p-icon">👷</div>
+                        <div>
+                            <h3 data-i18n="profile_worker_title">Daily Wage Worker</h3>
+                            <p data-i18n="profile_worker_desc">Manage expenses and avoid debt.</p>
+                        </div>
+                        <span class="check-mark">✅</span>
+                    </div>
+                    <div class="profile-card animate-in delay-2" onclick="selectProfile(this)">
+                        <div class="p-icon">👩‍🌾</div>
+                        <div>
+                            <h3 data-i18n="profile_women_title">Rural Women / SHG Member</h3>
+                            <p data-i18n="profile_women_desc">Build confidence in handling finances.</p>
+                        </div>
+                        <span class="check-mark">✅</span>
+                    </div>
+                    <div class="profile-card animate-in delay-3" onclick="selectProfile(this)">
+                        <div class="p-icon">🏦</div>
+                        <div>
+                            <h3 data-i18n="profile_bank_title">New Bank User</h3>
+                            <p data-i18n="profile_bank_desc">Learn UPI, ATM safely.</p>
+                        </div>
+                        <span class="check-mark">✅</span>
+                    </div>
+                    <div class="profile-card animate-in delay-4" onclick="selectProfile(this)">
+                        <div class="p-icon">🎓</div>
+                        <div>
+                            <h3 data-i18n="profile_youth_title">Youth from Low-Income Family</h3>
+                            <p data-i18n="profile_youth_desc">Develop savings habits and plan for future.</p>
+                        </div>
+                        <span class="check-mark">✅</span>
+                    </div>
+                </div>
+
+                <div class="onboarding-action animate-in delay-4">
+                    <button class="btn-start-journey" onclick="startJourney()" data-i18n="btn_start_journey">🚀 Start My Learning Journey</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="page-section" id="page-dashboard">
+        <div class="dashboard">
+            <div class="dashboard-greeting animate-in">
+                <h2 data-i18n="dash_welcome">Welcome back! 🙏</h2>
+                <p data-i18n="dash_progress">You're making great progress.</p>
+                <div class="motivational" data-i18n="dash_tip">💡 Small financial steps today create strong futures tomorrow.</div>
+                <button class="btn-narrate" onclick="speakKey('dash_tip')">🔊</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dash-panel animate-in delay-1">
+                    <h3 data-i18n="dash_quick">⚡ Quick Access</h3>
+                    <div class="quick-access-list">
+                        <div class="quick-access-item" onclick="showPage('learn')">
+                            <div class="qa-icon green">📖</div>
+                            <div class="qa-text"><h4 data-i18n="dash_continue">Continue Last Lesson</h4></div>
+                            <span class="qa-arrow">→</span>
+                        </div>
+                        <div class="quick-access-item" onclick="showPage('tools')">
+                            <div class="qa-icon gold">📊</div>
+                            <div class="qa-text"><h4 data-i18n="dash_budget">Open Budget Planner</h4></div>
+                            <span class="qa-arrow">→</span>
+                        </div>
+                        <div class="quick-access-item" onclick="showPage('tools')">
+                            <div class="qa-icon blue">🎯</div>
+                            <div class="qa-text"><h4 data-i18n="dash_savings">View Savings Goal</h4></div>
+                            <span class="qa-arrow">→</span>
+                        </div>
+                        <div class="quick-access-item" onclick="downloadOffline()">
+                            <div class="qa-icon green">📥</div>
+                            <div class="qa-text"><h4 data-i18n="dash_offline">Download Offline Content</h4></div>
+                            <span class="qa-arrow">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-panel animate-in delay-2">
+                    <h3 data-i18n="dash_suggested">📌 Suggested for You</h3>
+                    <div class="suggested-card" onclick="showPage('learn')">
+                        <div class="sc-label">Today's Lesson</div>
+                        <h4 data-i18n="mod4_title">Understanding Loans Before Borrowing</h4>
+                        <p data-i18n="mod4_desc">Know the difference between helpful loans and harmful debt traps.</p>
+                    </div>
+                    <div class="suggested-card gold-border">
+                        <div class="sc-label">💡 Financial Tip</div>
+                        <h4>The 50-30-20 Rule</h4>
+                        <p>50% needs, 30% wants, 20% savings. Even ₹10/day adds up!</p>
+                    </div>
+                    <div class="suggested-card blue-border" onclick="showPage('schemes')">
+                        <div class="sc-label">🏛️ Scheme Update</div>
+                        <h4 data-i18n="scheme2_title">Pradhan Mantri Mudra Yojana</h4>
+                        <p data-i18n="scheme2_desc">Small business loans without collateral.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section" id="page-learn">
+        <div class="learn-page">
+            <div class="section-header animate-in">
+                <div class="section-badge" data-i18n="learn_badge">📚 Learn</div>
+                <h2 data-i18n="learn_title">Your Learning Modules</h2>
+                <p data-i18n="learn_desc">Each lesson is short, simple, and designed for your daily life.</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card animate-in delay-1">
+                    <div class="module-card-top">
+                        <div class="module-icon green">💸</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod1_title">Where Does My Money Go?</h3>
+                            <p data-i18n="mod1_desc">Understand spending patterns and find ways to save.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 8 min</span><span>🎯 Beginner</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(1)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+
+                <div class="module-card animate-in delay-2">
+                    <div class="module-card-top">
+                        <div class="module-icon gold">🐖</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod2_title">Saving with Irregular Income</h3>
+                            <p data-i18n="mod2_desc">Strategies for saving when income changes weekly.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 10 min</span><span>🎯 Beginner</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(2)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+
+                <div class="module-card animate-in delay-3">
+                    <div class="module-card-top">
+                        <div class="module-icon blue">📱</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod3_title">Using UPI and ATMs Safely</h3>
+                            <p data-i18n="mod3_desc">Step-by-step guide to digital payments.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 12 min</span><span>🎯 Beginner</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(3)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+
+                <div class="module-card animate-in delay-4">
+                    <div class="module-card-top">
+                        <div class="module-icon gold">🏦</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod4_title">Understanding Loans Before Borrowing</h3>
+                            <p data-i18n="mod4_desc">Know helpful loans vs harmful debt traps.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 15 min</span><span>🎯 Intermediate</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(4)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+
+                <div class="module-card animate-in delay-1">
+                    <div class="module-card-top">
+                        <div class="module-icon green">👥</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod5_title">How SHGs Help You Save</h3>
+                            <p data-i18n="mod5_desc">How Self-Help Groups strengthen your finances.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 10 min</span><span>🎯 Beginner</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(5)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card animate-in delay-2">
+                    <div class="module-card-top">
+                        <div class="module-icon blue">🛡️</div>
+                        <div class="module-info">
+                            <h3 data-i18n="mod6_title">Protecting Yourself from Fraud</h3>
+                            <p data-i18n="mod6_desc">Recognise scams and keep money safe.</p>
+                        </div>
+                    </div>
+                    <div class="module-meta"><span>⏱️ 8 min</span><span>🎯 Important</span></div>
+                    <div class="module-actions">
+                        <button class="module-btn watch" onclick="openModal('videoModal')" data-i18n="btn_watch">▶️ Watch</button>
+                        <button class="module-btn listen" onclick="narrateLesson(6)" data-i18n="btn_listen">🔊 Listen</button>
+                        <button class="module-btn complete" onclick="markComplete(this)" data-i18n="btn_complete">✓ Complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section" id="page-tools">
+        <div class="tools-page">
+            <div class="section-header animate-in">
+                <div class="section-badge" data-i18n="tools_badge">🛠️ Tools</div>
+                <h2 data-i18n="tools_title">Your Financial Tools</h2>
+                <p data-i18n="tools_desc">Simple tools to plan money and build savings.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-panel animate-in delay-1">
+                    <h3 data-i18n="budget_title">📊 Budget Planner</h3>
+                    <p data-i18n="budget_desc">Enter income and expenses to see savings.</p>
+                    <button class="btn-narrate" onclick="speakKey('budget_desc')">🔊</button>
+                    <div class="budget-form">
+                        <div class="form-group">
+                            <label data-i18n="budget_income">Monthly / Weekly Income (₹)</label>
+                            <input type="number" id="incomeInput" placeholder="e.g. 8000" min="0">
+                        </div>
+                        <label class="expense-label" data-i18n="budget_expenses">Your Expenses</label>
+                        <div class="expense-list" id="expenseList">
+                            <div class="expense-row">
+                                <input type="text" placeholder="Food / खाना" class="expense-name">
+                                <input type="number" placeholder="₹" class="expense-amount" min="0">
+                            </div>
+                            <div class="expense-row">
+                                <input type="text" placeholder="Rent / किराया" class="expense-name">
+                                <input type="number" placeholder="₹" class="expense-amount" min="0">
+                            </div>
+                            <div class="expense-row">
+                                <input type="text" placeholder="Transport / यातायात" class="expense-name">
+                                <input type="number" placeholder="₹" class="expense-amount" min="0">
+                            </div>
+                        </div>
+                        <button class="btn-add-expense" onclick="addExpenseRow()" data-i18n="btn_add_expense">+ Add Another Expense</button>
+                        <button class="btn-calculate" onclick="calculateBudget()" data-i18n="btn_calculate">Calculate My Budget</button>
+                        <div class="budget-result" id="budgetResult"></div>
+                    </div>
+                </div>
+                <div class="tool-panel animate-in delay-2">
+                    <h3 data-i18n="savings_title">🎯 Savings Goal Tracker</h3>
+                    <p data-i18n="savings_desc">Choose a goal and track progress.</p>
+                    <button class="btn-narrate" onclick="speakKey('savings_desc')">🔊</button>
+                    <div class="savings-options" id="savingsOptions">
+                        <div class="savings-option" onclick="selectSavingsGoal(this,'Education')">
+                            <div class="so-icon">🎓</div>
+                            <div class="so-label" data-i18n="goal_education">Education</div>
+                        </div>
+                        <div class="savings-option" onclick="selectSavingsGoal(this,'Emergency Fund')">
+                            <div class="so-icon">🆘</div>
+                            <div class="so-label" data-i18n="goal_emergency">Emergency Fund</div>
+                        </div>
+                        <div class="savings-option" onclick="selectSavingsGoal(this,'Family Needs')">
+                            <div class="so-icon">👨‍👩‍👧‍👦</div>
+                            <div class="so-label" data-i18n="goal_family">Family Needs</div>
+                        </div>
+                        <div class="savings-option" onclick="selectSavingsGoal(this,'Small Business')">
+                            <div class="so-icon">🏪</div>
+                            <div class="so-label" data-i18n="goal_business">Small Business</div>
+                        </div>
+                    </div>
+                    <div class="savings-input-group">
+                        <label data-i18n="savings_target">How much do you want to save? (₹)</label>
+                        <input type="number" id="savingsTarget" placeholder="e.g. 5000" min="0">
+                    </div>
+                    <div class="savings-input-group">
+                        <label data-i18n="savings_weekly">How much can you save per week? (₹)</label>
+                        <input type="number" id="savingsWeekly" placeholder="e.g. 200" min="0">
+                    </div>
+                    <button class="btn-save-goal" onclick="startSaving()" data-i18n="btn_start_saving">🎯 Start Saving</button>
+                    <div class="savings-result" id="savingsResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section" id="page-schemes">
+        <div class="schemes-page">
+            <div class="section-header animate-in">
+                <div class="section-badge" data-i18n="schemes_badge">🏛️ Government Schemes</div>
+                <h2 data-i18n="schemes_title">Schemes That Can Help You</h2>
+                <p data-i18n="schemes_desc">Government programs to support your financial journey.</p>
+            </div>
+            <div class="schemes-grid">
+                <div class="scheme-card animate-in delay-1">
+                    <div class="scheme-icon">🏦</div>
+                    <h3 data-i18n="scheme1_title">Pradhan Mantri Jan Dhan Yojana</h3>
+                    <p data-i18n="scheme1_desc">Zero balance bank account with insurance.</p>
+                    <button class="btn-narrate" onclick="speakKey('scheme1_desc')">🔊</button>
+                    <ul class="scheme-benefits">
+                        <li>Zero balance bank account</li>
+                        <li>Free RuPay debit card</li>
+                        <li>₹2 lakh accident insurance</li>
+                        <li>₹30,000 life cover</li>
+                    </ul>
+                    <button class="btn-learn-apply" onclick="openModal('schemeModal')" data-i18n="btn_learn_apply">📋 Learn How to Apply</button>
+                </div>
+                <div class="scheme-card animate-in delay-2">
+                    <div class="scheme-icon scheme-icon-gold">💼</div>
+                    <h3 data-i18n="scheme2_title">Pradhan Mantri Mudra Yojana</h3>
+                    <p data-i18n="scheme2_desc">Small business loans without collateral.</p>
+                    <button class="btn-narrate" onclick="speakKey('scheme2_desc')">🔊</button>
+                    <ul class="scheme-benefits">
+                        <li>Loans ₹50,000 to ₹10 lakh</li>
+                        <li>No collateral needed</li>
+                        <li>Shishu, Kishore, Tarun categories</li>
+                    </ul>
+                    <button class="btn-learn-apply" onclick="openModal('schemeModal')" data-i18n="btn_learn_apply">📋 Learn How to Apply</button>
+                </div>
+                <div class="scheme-card animate-in delay-3">
+                    <div class="scheme-icon scheme-icon-blue">👧</div>
+                    <h3 data-i18n="scheme3_title">Sukanya Samriddhi Yojana</h3>
+                    <p data-i18n="scheme3_desc">Save for daughter's education with high interest.</p>
+                    <button class="btn-narrate" onclick="speakKey('scheme3_desc')">🔊</button>
+                    <ul class="scheme-benefits">
+                        <li>~8% interest rate</li>
+                        <li>Start with ₹250/year</li>
+                        <li>Tax-free returns</li>
+                    </ul>
+                    <button class="btn-learn-apply" onclick="openModal('schemeModal')" data-i18n="btn_learn_apply">📋 Learn How to Apply</button>
+                </div>
+                <div class="scheme-card animate-in delay-4">
+                    <div class="scheme-icon">🛡️</div>
+                    <h3 data-i18n="scheme4_title">PM Jeevan Jyoti Bima Yojana</h3>
+                    <p data-i18n="scheme4_desc">₹2 lakh life insurance at ₹436/year.</p>
+                    <button class="btn-narrate" onclick="speakKey('scheme4_desc')">🔊</button>
+                    <ul class="scheme-benefits">
+                        <li>₹2 lakh life cover</li>
+                        <li>Only ₹436/year</li>
+                        <li>Ages 18-50 eligible</li>
+                    </ul>
+                    <button class="btn-learn-apply" onclick="openModal('schemeModal')" data-i18n="btn_learn_apply">📋 Learn How to Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section" id="page-progress">
+        <div class="progress-page">
+            <div class="section-header animate-in">
+                <div class="section-badge" data-i18n="progress_badge">📊 My Progress</div>
+                <h2 data-i18n="progress_title">Your Learning Journey</h2>
+                <p data-i18n="progress_desc">See how far you've come. Every step counts!</p>
+            </div>
+            <div class="progress-overview">
+                <div class="progress-stat animate-in delay-1">
+                    <div class="ps-icon">📚</div>
+                    <div class="ps-number" id="lessonsCount">0</div>
+                    <div class="ps-label" data-i18n="progress_lessons">Lessons Completed</div>
+                </div>
+                <div class="progress-stat animate-in delay-2">
+                    <div class="ps-icon">🎯</div>
+                    <div class="ps-number" id="goalsCount">0</div>
+                    <div class="ps-label" data-i18n="progress_goals">Savings Goals Started</div>
+                </div>
+                <div class="progress-stat animate-in delay-3">
+                    <div class="ps-icon">⭐</div>
+                    <div class="ps-number" id="skillsCount">0</div>
+                    <div class="ps-label" data-i18n="progress_skills">Skills Learned</div>
+                </div>
+            </div>
+            <div class="progress-detail animate-in delay-2">
+                <h3 data-i18n="progress_detail">📈 Detailed Progress</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span data-i18n="bar_basics">Financial Basics</span>
+                        <span id="progressBasics">0%</span>
+                    </div>
+                    <div class="progress-bar-track"><div class="progress-bar-fill green" id="barBasics" style="width:0%;"></div></div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span data-i18n="bar_savings">Savings Skills</span>
+                        <span id="progressSavings">0%</span>
+                    </div>
+                    <div class="progress-bar-track"><div class="progress-bar-fill gold" id="barSavings" style="width:0%;"></div></div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span data-i18n="bar_digital">Digital Banking</span>
+                        <span id="progressDigital">0%</span>
+                    </div>
+                    <div class="progress-bar-track"><div class="progress-bar-fill blue" id="barDigital" style="width:0%;"></div></div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span data-i18n="bar_schemes">Government Schemes</span>
+                        <span id="progressSchemes">0%</span>
+                    </div>
+                    <div class="progress-bar-track"><div class="progress-bar-fill green" id="barSchemes" style="width:0%;"></div></div>
+                </div>
+            </div>
+            <div class="progress-encouragement animate-in delay-3">
+                <div class="pe-icon">🌟</div>
+                <h3 data-i18n="encourage_title">You are building lifelong financial confidence!</h3>
+                <p data-i18n="encourage_desc">Keep going — every lesson brings you closer to financial freedom.</p>
+                <button class="btn-narrate" onclick="speakKey('encourage_desc')">🔊</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="accessibility-toolbar">
+        <div class="a11y-panel" id="a11yPanel">
+            <h4>♿ Accessibility</h4>
+            <div class="a11y-option" onclick="toggleAudio()"><span class="a11y-icon">🔊</span><span>Audio Guidance</span></div>
+            <div class="a11y-option" onclick="toggleTextSize()"><span class="a11y-icon">🔤</span><span>Text Size</span></div>
+            <div class="a11y-option" onclick="focusLangSelector()"><span class="a11y-icon">🌐</span><span>Language</span></div>
+            <div class="a11y-option" onclick="downloadOffline()"><span class="a11y-icon">📥</span><span>Offline</span></div>
+        </div>
+        <button class="a11y-toggle" onclick="toggleA11yPanel()">♿</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>🌱 MoneyDharma</h3>
+                <p data-i18n="footer_about">Financial Wisdom for Everyday Life.</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer_learn">Learn</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('learn')">All Lessons</a></li>
+                    <li><a href="#" onclick="showPage('learn')">For Beginners</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer_tools">Tools</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('tools')">Budget Planner</a></li>
+                    <li><a href="#" onclick="showPage('tools')">Savings Tracker</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer_support">Support</h4>
+                <ul>
+                    <li><a href="#">Help Centre</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copyright">© 2025 MoneyDharma. Made with 💚 for India.</p>
+        </div>
+    </footer>
+
+    <!-- ===== MODALS ===== -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+            <div class="modal-icon">🔐</div>
+            <h2>Welcome Back!</h2>
+            <p>Sign in to continue.</p>
+            <div class="login-form">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="Enter phone number" id="loginPhone">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter password" id="loginPassword">
+                </div>
+                <button class="btn-full" onclick="loginUser()" data-i18n="btn_login">Login</button>
+                <p class="login-switch">New here? <a href="#" onclick="closeModal('loginModal'); showPage('onboarding');">Create account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="videoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('videoModal')">✕</button>
+            <div class="modal-icon">▶️</div>
+            <h2>Video Lessons</h2>
+            <div class="video-links">
+                <a href="https://youtu.be/5DKhXtU_B3o" target="_blank"><button class="btn-video-link">📺 Where does my money go</button></a>
+                <a href="https://youtu.be/0djeUYALXe0" target="_blank"><button class="btn-video-link">📺 Saving with Irregular Income</button></a>
+                <a href="https://youtu.be/eseJdoW6AwE" target="_blank"><button class="btn-video-link">📺 Using UPI Safely</button></a>
+                <a href="https://youtu.be/eseJdoW6AwE" target="_blank"><button class="btn-video-link">📺 Understanding Loan</button></a>
+                <a href="https://youtu.be/fuiiJuB7tJs" target="_blank"><button class="btn-video-link">📺 How SHG Help You Save</button></a>
+                <a href="https://youtu.be/yJwo3xiVr3g" target="_blank"><button class="btn-video-link">📺 Protecting from Fraud</button></a>
+            </div>
+            <button class="btn-full" onclick="closeModal('videoModal')">Close</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="schemeModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('schemeModal')">✕</button>
+            <div class="modal-icon">📋</div>
+            <h2>How to Apply</h2>
+            <div class="scheme-steps">
+                <div class="scheme-portal-links">
+                    <a href="https://www.pmjdy.gov.in/" target="_blank"><button class="btn-video-link">🏦 Jan Dhan Portal</button></a>
+                    <a href="https://www.mudra.org.in/" target="_blank"><button class="btn-video-link">💼 Mudra Portal</button></a>
+                </div>
+                <p><strong>Step 1:</strong> Visit nearest bank / CSC.</p>
+                <p><strong>Step 2:</strong> Carry Aadhaar, PAN, photo.</p>
+                <p><strong>Step 3:</strong> Fill application form.</p>
+                <p><strong>Step 4:</strong> Processed in 1-7 days.</p>
+            </div>
+            <button class="btn-full" onclick="closeModal('schemeModal')">Got It!</button>
+        </div>
+    </div>
+
+        <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('successModal')">✕</button>
+            <div class="modal-icon">🎉</div>
+            <h2 id="successTitle">Great Job!</h2>
+            <p id="successMessage">You're making progress on your financial journey!</p>
+            <button class="btn-full" onclick="closeModal('successModal')">Continue</button>
+        </div>
+    </div>
+
+    <div class="va-container" id="vaContainer">
+
+        <!-- Chat Panel -->
+        <div class="va-panel" id="vaPanel">
+            <div class="va-panel-header">
+                <div class="va-panel-title">
+                    <span class="va-avatar">🪷</span>
+                    <div>
+                        <h4 id="vaAssistantName">Dharma Assistant</h4>
+                        <span class="va-status" id="vaStatus">Ready to help</span>
+                    </div>
+                </div>
+                <div class="va-panel-actions">
+                    <button class="va-lang-toggle" id="vaLangToggle" onclick="toggleVALang()">EN/हि</button>
+                    <button class="va-close-btn" onclick="toggleVAPanel()">✕</button>
+                </div>
+            </div>
+
+            <div class="va-chat" id="vaChat">
+            </div>
+
+            <div class="va-quick-actions" id="vaQuickActions">
+                <button class="va-quick-btn" onclick="vaQuickAction('learn')" data-va-en="Start Learning" data-va-hi="सीखना शुरू करें">📚 Start Learning</button>
+                <button class="va-quick-btn" onclick="vaQuickAction('budget')" data-va-en="Budget Help" data-va-hi="बजट मदद">📊 Budget Help</button>
+                <button class="va-quick-btn" onclick="vaQuickAction('savings')" data-va-en="Savings Tips" data-va-hi="बचत सुझाव">💰 Savings Tips</button>
+                <button class="va-quick-btn" onclick="vaQuickAction('schemes')" data-va-en="Gov Schemes" data-va-hi="सरकारी योजनाएं">🏛️ Gov Schemes</button>
+                <button class="va-quick-btn" onclick="vaQuickAction('upi')" data-va-en="UPI Help" data-va-hi="UPI मदद">📱 UPI Help</button>
+                <button class="va-quick-btn" onclick="vaQuickAction('fraud')" data-va-en="Fraud Alert" data-va-hi="धोखाधड़ी">🛡️ Fraud Alert</button>
+            </div>
+
+            <div class="va-input-area">
+                <input type="text" class="va-text-input" id="vaTextInput"
+                    placeholder="Type or speak your question..."
+                    onkeypress="if(event.key==='Enter')sendVAMessage()">
+                <button class="va-send-btn" onclick="sendVAMessage()" title="Send">➤</button>
+                <button class="va-mic-btn" id="vaMicBtn" onclick="toggleVoiceInput()" title="Speak">
+                    <span class="mic-icon" id="vaMicIcon">🎤</span>
+                    <span class="mic-waves" id="vaMicWaves"></span>
+                </button>
+            </div>
+        </div>
+
+        <button class="va-fab" id="vaFab" onclick="toggleVAPanel()">
+            <span class="va-fab-icon" id="vaFabIcon">🪷</span>
+            <span class="va-fab-pulse"></span>
+        </button>
+    </div>
+    <script src="script.js"></script>
+    <script src="voice-assistant.js"></script>
+</body>
+</html>
+
+    <script src="script.js"></script>
+</body>
+</html>
